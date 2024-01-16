@@ -1,2 +1,2 @@
-# Test_Healing_2
+# Test_Healing
 Page to test Healing application
