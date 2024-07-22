@@ -18,4 +18,65 @@
 
       form {
         background-color: #fff;
-        padding:
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h3 {
+        margin-top: 0;
+        color: #333;
+      }
+
+      div {
+        margin-bottom: 15px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="text"].username {
+        margin-bottom: 15px;
+      }
+
+      .text {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #888;
+      }
+
+      .number-text {
+        font-size: 18px;
+        font-weight: bold;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="">
+      <h3>Login</h3>
+      <div>
+        <label for="username">Email</label>
+        <input type="text" name="username" id="username" class="username" />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="text" name="password" id="password" class="password-test" />
+      </div>
+      <p class="text">texto de exemplo</p>
+    <p class="number-text">120</p>
+    </form>
+  </body>
+</html>
+
