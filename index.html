@@ -10,10 +10,10 @@
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            display: center;
+            display: flex;
             justify-content: center;
             align-items: center;
-            height: 50vh;
+            height: 100vh;
         }
 
         form {
@@ -38,16 +38,12 @@
             color: #555;
         }
 
-        input[type="text"] {
-            width: 15%;
+        input[type="text"], input[type="date"], select {
+            width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
-        }
-
-        input[type="text"].username {
-            margin-bottom: 18px;
         }
 
         .text {
@@ -81,11 +77,24 @@
         <h3>Login</h3>
         <div>
             <label for="username">Email</label>
-            <input type="text" name="username" id="username" class="username" />
+            <input type="text" name="username" id="username" />
         </div>
         <div>
             <label for="password">Password</label>
-            <input type="text" name="password" id="password" class="password" />
+            <input type="text" name="password" id="password" />
+        </div>
+        <div>
+            <label for="dob">Data de Nascimento</label>
+            <input type="date" name="dob" id="dob" />
+        </div>
+        <div>
+            <label for="gender">Gênero</label>
+            <select name="gender" id="gender">
+                <option value="male">Masculino</option>
+                <option value="female">Feminino</option>
+                <option value="other">Outro</option>
+                <option value="prefer-not-to-say">Prefiro não dizer</option>
+            </select>
         </div>
         <p class="text">texto de exemplo</p>
         <p class="number-text">120</p>
