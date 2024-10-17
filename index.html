@@ -1,87 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Healing</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-          
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
 
-        form {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
-            width: 50%;
-        }
+      form {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+        width: 50%;
+      }
 
-        h3 {
-            margin-top: 0;
-            color: #333;
-        }
+      h3 {
+        margin-top: 0;
+        color: #333;
+      }
 
-        div {
-            margin-bottom: 15px;
-        }
+      div {
+        margin-bottom: 15px;
+      }
 
-        label {
-            display: block;
-            margin-bottom: 10px;
-            color: #555;
-        }
+      label {
+        display: block;
+        margin-bottom: 10px;
+        color: #555;
+      }
 
-        input[type="text"], input[type="date"], select {
-            width: 40%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-sizing: border-box;
-        }
+      input[type="text"],
+      input[type="date"],
+      select {
+        width: 40%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-sizing: border-box;
+      }
 
-        .text {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #888;
-        }
+      .text {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #888;
+      }
 
-        .number-text {
-            font-size: 18px;
-            font-weight: bold;
-            color: #555;
-        }
+      .number-text {
+        font-size: 18px;
+        font-weight: bold;
+        color: #555;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <form action="">
-        <h3>Cadastro/Login</h3>
-        <div>
-            <label for="username">Email</label>
-            <input type="text" name="username" id="username"/>
-        </div>
-        <div>
-            <label for="password">Password</label>
-            <input type="text" name="password" id="password" />
-        </div>
-        <div>
-            <label for="dob">Data de Nascimento</label>
-            <input type="date" name="dob" id="dobok" />
-        </div>
-        
-        <p class="text">texto de exemplo</p>
-        <p class="number-text">99</p>
-         <p class="number-text">100</p>
-         <p class="number-text">120</p>
-       
+      <h3>Cadastro/Login</h3>
+      <div>
+        <label for="username">Email</label>
+        <input type="text" name="username" id="username" />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="text" name="password" id="password" />
+      </div>
+      <div>
+        <label for="dob">Data de Nascimento</label>
+        <input type="date" name="dob" id="dobok" />
+      </div>
+
+      <p class="text">texto de exemplo</p>
+      <p class="number-text">99</p>
+      <p class="number-text">100</p>
+      <p class="number-text">120</p>
+      <div class="container">
+        <label for="opcoes">Escolha múltiplas opções:</label><br />
+        <select id="opcoes" name="opcoes[]" multiple>
+          <option value="opcao1">Opção 1</option>
+          <option value="opcao2">Opção 2</option>
+          <option value="opcao3">Opção 3</option>
+          <option value="opcao4">Opção 4</option>
+        </select>
+      </div>
     </form>
-</body>
+  </body>
 </html>
