@@ -67,7 +67,7 @@
       <h3>Cadastro/Login</h3>
       <div>
         <label for="username22">Email</label>
-        <input type="text" name="user-102" id="nome-10"/>
+        <input type="text" name="user-102" id="nome-10" />
       </div>
       <div>
         <label for="password">Password</label>
@@ -77,12 +77,20 @@
         <label for="dob">Data de Nascimento</label>
         <input type="date" name="dob" id="data-123" />
       </div>
+      <div>
+        <label for="texto-dinamico">Campo de Texto</label>
+        <input type="text" name="texto-dinamico" id="texto-dinamico" />
+        <p
+          id="texto-exibido"
+          style="margin-top: 10px; color: #333; font-weight: normal"
+        ></p>
+      </div>
 
       <p class="text">texto de exemplo</p>
       <p class="number-text">99</p>
       <p class="number-text">100</p>
       <p class="number-text">120</p>
-      
+
       <div class="container">
         <label for="opcoes">Escolha múltiplas opções:</label><br />
         <select id="opcoes1234" name="opcoes[]" multiple>
@@ -93,5 +101,13 @@
         </select>
       </div>
     </form>
+    <script>
+      const inputTexto = document.getElementById("texto-dinamico");
+      const textoExibido = document.getElementById("texto-exibido");
+
+      inputTexto.addEventListener("input", function () {
+        textoExibido.textContent = this.value;
+      });
+    </script>
   </body>
 </html>
