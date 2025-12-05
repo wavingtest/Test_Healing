@@ -60,6 +60,20 @@
         font-weight: bold;
         color: #555;
       }
+
+      .elemento-temporizado {
+        display: none;
+        padding: 15px;
+        margin: 10px 0;
+        background-color: #e8f4f8;
+        border-left: 4px solid #2196f3;
+        border-radius: 5px;
+        color: #333;
+      }
+
+      .elemento-temporizado.visivel {
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -100,6 +114,19 @@
           <option value="opcao4">Opção 4</option>
         </select>
       </div>
+
+      <div id="elemento-5s" class="elemento-temporizado">
+        Elemento exibido após 5 segundos
+      </div>
+      <div id="elemento-10s" class="elemento-temporizado">
+        Elemento exibido após 10 segundos
+      </div>
+      <div id="elemento-15s" class="elemento-temporizado">
+        Elemento exibido após 15 segundos
+      </div>
+      <div id="elemento-35s" class="elemento-temporizado">
+        Elemento exibido após 35 segundos
+      </div>
     </form>
     <script>
       const inputTexto = document.getElementById("texto-dinamico");
@@ -107,6 +134,25 @@
 
       inputTexto.addEventListener("input", function () {
         textoExibido.textContent = this.value;
+      });
+
+      // Elementos que aparecem com setTimeout
+      window.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          document.getElementById("elemento-5s").classList.add("visivel");
+        }, 5000);
+
+        setTimeout(function () {
+          document.getElementById("elemento-10s").classList.add("visivel");
+        }, 10000);
+
+        setTimeout(function () {
+          document.getElementById("elemento-15s").classList.add("visivel");
+        }, 15000);
+
+        setTimeout(function () {
+          document.getElementById("elemento-35s").classList.add("visivel");
+        }, 35000);
       });
     </script>
   </body>
