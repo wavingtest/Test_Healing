@@ -154,13 +154,17 @@
         textoExibido.textContent = this.value;
       });
 
-      // Contador de tempo
-      let tempoInicial = Date.now();
+      // Contador de tempo - usando Date para maior precisão
+      let startDate = null;
       const contadorElemento = document.getElementById("contador-tempo");
 
       function atualizarContador() {
-        const tempoAtual = Date.now();
-        const tempoDecorrido = tempoAtual - tempoInicial;
+        if (!startDate) {
+          return; // Não atualiza se startDate não foi definido
+        }
+        
+        const currentDate = new Date();
+        const tempoDecorrido = currentDate - startDate;
 
         const horas = Math.floor(tempoDecorrido / 3600000);
         const minutos = Math.floor((tempoDecorrido % 3600000) / 60000);
@@ -176,10 +180,10 @@
 
       // Inicia o contador e elementos temporizados quando a página carrega
       window.addEventListener("DOMContentLoaded", function () {
-        // Inicia o contador de tempo
-        tempoInicial = Date.now();
-        atualizarContador();
-        setInterval(atualizarContador, 100);
+        // Inicia o contador de tempo com Date para maior precisão
+        startDate = new Date();
+        atualizarContador(); // Atualiza imediatamente
+        setInterval(atualizarContador, 100); // Atualiza a cada 100ms
 
         // Elementos que aparecem com setTimeout
         setTimeout(function () {
