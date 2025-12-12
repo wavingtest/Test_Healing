@@ -14,7 +14,7 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-      } 
+      }
 
       form {
         background-color: #ffffff;
@@ -74,6 +74,19 @@
       .elemento-temporizado.visivel {
         display: block;
       }
+
+      .contador-tempo {
+        text-align: center;
+        background-color: #2196f3;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-family: 'Courier New', monospace;
+        margin: 20px 0;
+      }
     </style>
   </head>
   <body>
@@ -115,6 +128,8 @@
         </select>
       </div>
 
+      <div id="contador-tempo" class="contador-tempo">00:00:00.0</div>
+
       <div id="elemento-5s" class="elemento-temporizado">
         Elemento exibido após 5 segundos
       </div>
@@ -139,8 +154,34 @@
         textoExibido.textContent = this.value;
       });
 
-      // Elementos que aparecem com setTimeout
+      // Contador de tempo
+      let tempoInicial = Date.now();
+      const contadorElemento = document.getElementById("contador-tempo");
+
+      function atualizarContador() {
+        const tempoAtual = Date.now();
+        const tempoDecorrido = tempoAtual - tempoInicial;
+
+        const horas = Math.floor(tempoDecorrido / 3600000);
+        const minutos = Math.floor((tempoDecorrido % 3600000) / 60000);
+        const segundos = Math.floor((tempoDecorrido % 60000) / 1000);
+        const milissegundos = Math.floor((tempoDecorrido % 1000) / 100);
+
+        const horasFormatadas = String(horas).padStart(2, "0");
+        const minutosFormatados = String(minutos).padStart(2, "0");
+        const segundosFormatados = String(segundos).padStart(2, "0");
+
+        contadorElemento.textContent = `${horasFormatadas}:${minutosFormatados}:${segundosFormatados}.${milissegundos}`;
+      }
+
+      // Inicia o contador e elementos temporizados quando a página carrega
       window.addEventListener("DOMContentLoaded", function () {
+        // Inicia o contador de tempo
+        tempoInicial = Date.now();
+        atualizarContador();
+        setInterval(atualizarContador, 100);
+
+        // Elementos que aparecem com setTimeout
         setTimeout(function () {
           document.getElementById("elemento-5s").classList.add("visivel");
         }, 5000);
