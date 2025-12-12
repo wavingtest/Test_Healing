@@ -165,6 +165,7 @@
 
       // Contador de tempo - usando Date para maior precisão
       let startDate = null;
+      let horarioInicialFormatado = null; // Armazena o horário inicial formatado para não ser alterado
       const contadorElemento = document.getElementById("contador-tempo");
       const horarioInicialElemento = document.getElementById("horario-inicial");
       const horarioAtualElemento = document.getElementById("horario-atual");
@@ -185,6 +186,12 @@
         const currentDate = new Date();
         const tempoDecorrido = currentDate - startDate;
 
+        // Garante que o tempo decorrido não seja negativo
+        if (tempoDecorrido < 0) {
+          console.warn("Tempo decorrido negativo detectado! startDate:", startDate, "currentDate:", currentDate);
+          return;
+        }
+
         const horas = Math.floor(tempoDecorrido / 3600000);
         const minutos = Math.floor((tempoDecorrido % 3600000) / 60000);
         const segundos = Math.floor((tempoDecorrido % 60000) / 1000);
@@ -198,14 +205,25 @@
         
         // Atualiza o horário atual
         horarioAtualElemento.textContent = formatarHorario(currentDate);
+        
+        // Garante que o horário inicial nunca seja alterado
+        if (horarioInicialFormatado) {
+          horarioInicialElemento.textContent = horarioInicialFormatado;
+        }
       }
 
       // Inicia o contador e elementos temporizados quando a página carrega
       window.addEventListener("DOMContentLoaded", function () {
         // Inicia o contador de tempo com Date para maior precisão
+        // Define startDate e horarioInicialFormatado de uma vez para evitar race conditions
         startDate = new Date();
-        horarioInicialElemento.textContent = formatarHorario(startDate);
-        atualizarContador(); // Atualiza imediatamente
+        horarioInicialFormatado = formatarHorario(startDate);
+        horarioInicialElemento.textContent = horarioInicialFormatado;
+        
+        // Atualiza imediatamente para garantir que tudo está sincronizado
+        atualizarContador();
+        
+        // Inicia o intervalo de atualização
         setInterval(atualizarContador, 100); // Atualiza a cada 100ms
 
         // Elementos que aparecem com setTimeout
