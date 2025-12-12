@@ -129,6 +129,15 @@
       </div>
 
       <div id="contador-tempo" class="contador-tempo">00:00:00.0</div>
+      
+      <div style="margin: 10px 0; padding: 10px; background-color: #f0f0f0; border-radius: 5px;">
+        <div style="margin-bottom: 5px;">
+          <strong>Horário Inicial:</strong> <span id="horario-inicial">--:--:--</span>
+        </div>
+        <div>
+          <strong>Horário Atual:</strong> <span id="horario-atual">--:--:--</span>
+        </div>
+      </div>
 
       <div id="elemento-5s" class="elemento-temporizado">
         Elemento exibido após 5 segundos
@@ -157,6 +166,16 @@
       // Contador de tempo - usando Date para maior precisão
       let startDate = null;
       const contadorElemento = document.getElementById("contador-tempo");
+      const horarioInicialElemento = document.getElementById("horario-inicial");
+      const horarioAtualElemento = document.getElementById("horario-atual");
+
+      function formatarHorario(date) {
+        const horas = String(date.getHours()).padStart(2, "0");
+        const minutos = String(date.getMinutes()).padStart(2, "0");
+        const segundos = String(date.getSeconds()).padStart(2, "0");
+        const milissegundos = String(date.getMilliseconds()).padStart(3, "0");
+        return `${horas}:${minutos}:${segundos}.${milissegundos}`;
+      }
 
       function atualizarContador() {
         if (!startDate) {
@@ -176,12 +195,16 @@
         const segundosFormatados = String(segundos).padStart(2, "0");
 
         contadorElemento.textContent = `${horasFormatadas}:${minutosFormatados}:${segundosFormatados}.${milissegundos}`;
+        
+        // Atualiza o horário atual
+        horarioAtualElemento.textContent = formatarHorario(currentDate);
       }
 
       // Inicia o contador e elementos temporizados quando a página carrega
       window.addEventListener("DOMContentLoaded", function () {
         // Inicia o contador de tempo com Date para maior precisão
         startDate = new Date();
+        horarioInicialElemento.textContent = formatarHorario(startDate);
         atualizarContador(); // Atualiza imediatamente
         setInterval(atualizarContador, 100); // Atualiza a cada 100ms
 
